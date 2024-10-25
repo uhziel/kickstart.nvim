@@ -2,4 +2,7 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+
+vim.g.have_nerd_font = true
+
 return {}
