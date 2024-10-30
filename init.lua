@@ -466,6 +466,9 @@ require('lazy').setup({
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
+
+      -- JSON schemas
+      'b0o/SchemaStore.nvim',
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -607,6 +610,35 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
+        yamlls = {
+          settings = {
+            yaml = {
+              validate = true,
+              schemeStore = {
+                enable = false,
+                url = '',
+              },
+              schemes = require('schemastore').yaml.schemas {
+                extra = {
+                  {
+                    description = 'kubernetes',
+                    fileMatch = { 's1-pod-demo-command-args.yaml', 'k8s*/*.yaml', 'k8s**.yaml' },
+                    name = 'kubernetes',
+                    url = 'kubernetes',
+                  },
+                },
+              },
+            },
+          },
+        },
+        jsonls = {
+          settings = {
+            json = {
+              schemes = require('schemastore').json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
