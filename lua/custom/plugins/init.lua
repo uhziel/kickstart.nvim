@@ -4,5 +4,6 @@
 -- See the kickstart.nvim README for more information
 
 vim.g.have_nerd_font = true
+vim.opt.conceallevel = 1
 
 return {}
