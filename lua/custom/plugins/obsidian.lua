@@ -23,6 +23,10 @@ return {
       daily_notes = {
         folder = 'diary-2024',
       },
+      disable_frontmatter = true,
+      note_id_func = function(title)
+        return title
+      end,
     },
   },
 }
