@@ -44,6 +44,12 @@ return {
 
         return out
       end,
+      follow_url_func = function(url)
+        vim.ui.open(url) -- need Neovim 0.10.0+
+      end,
+      follow_img_func = function(img)
+        vim.fn.jobstart { 'qlmanage', '-p', img } -- Mac OS quick look preview
+      end,
     },
   },
 }
