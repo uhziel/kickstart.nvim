@@ -21,8 +21,9 @@ return {
         },
       },
       daily_notes = {
-        folder = 'diary-2024',
+        folder = 'diary',
       },
+      new_notes_location = 'current_dir',
       note_id_func = function(title)
         return title
       end,
@@ -51,9 +52,12 @@ return {
         vim.fn.jobstart { 'qlmanage', '-p', img } -- Mac OS quick look preview
       end,
       callbacks = {
-        pre_write_note = function(client, note)
+        pre_write_note = function(_, note)
           note:add_field('updated', os.date '%FT%T+08:00')
         end,
+      },
+      attachments = {
+        img_folder = 'assets/',
       },
     },
   },
