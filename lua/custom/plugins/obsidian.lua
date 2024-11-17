@@ -50,6 +50,11 @@ return {
       follow_img_func = function(img)
         vim.fn.jobstart { 'qlmanage', '-p', img } -- Mac OS quick look preview
       end,
+      callbacks = {
+        pre_write_note = function(client, note)
+          note:add_field('updated', os.date '%FT%T+08:00')
+        end,
+      },
     },
   },
 }
